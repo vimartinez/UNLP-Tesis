@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file has been generated with the OpenXES library. It conforms -->
+<!-- to the XML serialization of the XES standard for log storage and -->
+<!-- management. -->
+<!-- XES standard version: 1.0 -->
+<!-- OpenXES library version: 1.0RC7 -->
+<!-- OpenXES is available from http://www.openxes.org/ -->
+<log xes.version="1.0" xes.features="nested-attributes" openxes.version="1.0RC7">
+	<extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext"/>
+	<extension name="Lifecycle" prefix="lifecycle" uri="http://www.xes-standard.org/lifecycle.xesext"/>
+	<extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext"/>
+	<classifier name="Event Name" keys="concept:name"/>
+	<classifier name="(Event Name AND Lifecycle transition)" keys="concept:name lifecycle:transition"/>
+	<string key="concept:name" value="XES Event Log"/>
+	<trace>
+		<string key="concept:name" value="1"/>
+		<event>
+			<date key="eveFecha" value="2017-10-02T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-07T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ENTREGADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="1"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="10"/>
+		<event>
+			<date key="eveFecha" value="2017-10-23T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-28T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="NO EXISTE DIRECCION"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="5"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="11"/>
+		<event>
+			<date key="eveFecha" value="2017-10-29T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-03T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="DATOS FALTANTES EN DIRECCION"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="12"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="12"/>
+		<event>
+			<date key="eveFecha" value="2017-10-30T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-07T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="1 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="2"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-08T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="2 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="4"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-09T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ESPERANDO RETIRO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="80"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-10T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ENTREGADO EN OFICINA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="3"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="13"/>
+		<event>
+			<date key="eveFecha" value="2017-10-31T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-04T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ENTREGADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="1"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="14"/>
+		<event>
+			<date key="eveFecha" value="2017-11-01T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-05T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="CANCELADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="50"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="15"/>
+		<event>
+			<date key="eveFecha" value="2017-11-02T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-11-06T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="NO SE PUEDE LLEGAR A DIRECCION"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="22"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="2"/>
+		<event>
+			<date key="eveFecha" value="2017-10-03T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-08T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="1 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="2"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-09T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ENTREGADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="1"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="3"/>
+		<event>
+			<date key="eveFecha" value="2017-10-04T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-10T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="1 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="2"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-12T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ENTREGADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="1"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="4"/>
+		<event>
+			<date key="eveFecha" value="2017-10-05T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-13T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="1 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="2"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-14T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="2 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="4"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-15T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="ENTREGADO EN OFICINA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="3"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="5"/>
+		<event>
+			<date key="eveFecha" value="2017-10-06T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-16T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="1 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="2"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-17T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="50"/>
+			<string key="concept:name" value="2 INTENTO DE ENTREGA"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="4"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-18T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="DEVOLUCION"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="9"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="6"/>
+		<event>
+			<date key="eveFecha" value="2017-10-19T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-24T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="SE MUDO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="6"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7"/>
+		<event>
+			<date key="eveFecha" value="2017-10-20T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-25T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="FALLECIDO"/>
+			<string key="lifecycle:transition" value="complete"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="8"/>
+		<event>
+			<date key="eveFecha" value="2017-10-21T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-26T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="DESCONOCIDO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="20"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="9"/>
+		<event>
+			<date key="eveFecha" value="2017-10-22T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="start"/>
+			<string key="concept:name" value="INGRESADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="0"/>
+		</event>
+		<event>
+			<date key="eveFecha" value="2017-10-27T11:00:00.000-03:00"/>
+			<string key="eveTransicion" value="complete"/>
+			<string key="concept:name" value="RECHAZADO"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<string key="Eveid" value="8"/>
+		</event>
+	</trace>
+</log>
