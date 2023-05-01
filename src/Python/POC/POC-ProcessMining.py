@@ -9,17 +9,20 @@ import pm4py
 import pandas as pd
 
 POSTAL_PROCESS_PETRI_NET = "PostalProcess.pnml"
-INPUT_LOG_FILE = "EventLog.xes"
-OUTPUT_LOG_FILE = "TrazasConAjusteBajo.csv"
-OUTPUT_LOG_FILE2 = "TrazasConBajaPerformance.csv"
-OUTPUT_LOG_FILE_XES = "TrazasConAjusteBajo.xes"
-OUTPUT_LOG_FILE_XES2 = "TrazasConBajaPerformance.xes"
+INPUT_LOG_FILE = "EventLogPOC.xes"
+OUTPUT_LOG_FILE = "TrazasConAjusteBajoPOC.csv"
+OUTPUT_LOG_FILE2 = "TrazasConBajaPerformancePOC.csv"
+OUTPUT_LOG_FILE_XES = "TrazasConAjusteBajoPOC.xes"
+OUTPUT_LOG_FILE_XES2 = "TrazasConBajaPerformancePOC.xes"
 
 def mine_postal_data():
     
     #Importar log y proceso
     event_log = pm4py.read_xes(INPUT_LOG_FILE)
     petri_net, initial_marking, final_marking = pm4py.read_pnml(POSTAL_PROCESS_PETRI_NET)
+    start_activities = pm4py.get_start_activities(event_log)
+    end_activities = pm4py.get_end_activities(event_log)
+    print("Start activities: {}\nEnd activities: {}".format(start_activities, end_activities))
     
     #Verificación de conformidad
     conformance_token_based_replay = pm4py.conformance_diagnostics_token_based_replay(event_log, petri_net, initial_marking, final_marking, activity_key='concept:name', case_id_key='case:concept:name', timestamp_key='time:timestamp')
