@@ -9,8 +9,8 @@ import pm4py
 import pandas as pd
 import sqlalchemy
 
-POSTAL_PROCESS_PETRI_NET = "PostalProcess.pnml"
-INPUT_LOG_FILE = "TrazasDeEntrada.csv"
+POSTAL_PROCESS_PETRI_NET = "PostalProcessAlpha.pnml"
+INPUT_LOG_FILE = "TrazasEntrada-01.csv"
 DB_HOST = "localhost"
 DB_NAME = "UNLP-Tesis"
 DB_USER = "postgres"
@@ -21,18 +21,24 @@ def mine_postal_data():
     
     #importar csv
     event_log = pd.read_csv(INPUT_LOG_FILE, sep=',')
+    event_log = event_log.applymap(str)
     event_log = pm4py.format_dataframe(event_log, case_id='case_id', activity_key='activity', timestamp_key='timestamp')
+    
     #importar proceso
     petri_net, initial_marking, final_marking = pm4py.read_pnml(POSTAL_PROCESS_PETRI_NET)
+    
     #verificación de conformidad
-    conformance_token_based_replay = pm4py.conformance_diagnostics_token_based_replay(event_log, petri_net, initial_marking, final_marking, activity_key='concept:name', case_id_key='case:concept:name', timestamp_key='time:timestamp')
+    conformance_token_based_replay = pm4py.conformance_diagnostics_token_based_replay(event_log, petri_net, initial_marking, final_marking, activity_key='activity', case_id_key='case_id', timestamp_key='time:timestamp')
     data_frame = pd.DataFrame(conformance_token_based_replay)
-    merged_df = pd.merge(event_log, data_frame, left_index=True, right_index=True, how='inner')
+    event_log_traces = event_log.drop_duplicates(subset=['case_id'])
+    event_log_traces.drop('activityid', inplace=True, axis=1)
+    event_log_traces.drop('activity', inplace=True, axis=1)
+    merged_df = pd.merge(event_log_traces, data_frame, left_index=True, right_index=True, how='inner')
+    
+    #Remover columnas adicionales
     merged_df.drop('case:concept:name', inplace=True, axis=1)
     merged_df.drop('concept:name', inplace=True, axis=1)
     merged_df.drop('time:timestamp', inplace=True, axis=1)
-    merged_df.drop('@@index', inplace=True, axis=1)
-    merged_df.drop('@@case_index', inplace=True, axis=1)
     merged_df.drop('activated_transitions', inplace=True, axis=1)
     merged_df.drop('reached_marking', inplace=True, axis=1)
     merged_df.drop('enabled_transitions_in_marking', inplace=True, axis=1)
@@ -41,28 +47,33 @@ def mine_postal_data():
     merged_df.drop('consumed_tokens', inplace=True, axis=1)
     merged_df.drop('remaining_tokens', inplace=True, axis=1)
     merged_df.drop('produced_tokens', inplace=True, axis=1)
-    
-    merged_df.to_csv("merged_df.csv",index=False, header=True)
-    filtered_traces =merged_df.query("trace_fitness < 0.5")
+    merged_df.drop('trace_is_fit', inplace=True, axis=1)
 
-        
     #Filtrado por ajuste menor a 0.5
-   # filtered_traces = list(filter(lambda x: x['trace_fitness'] < 0.5, event_log2))
-    #Filrado por baja performance ...
+    traces_with_low_alignemt = merged_df.query("trace_fitness < 0.5")
+    
+    #Filrado por tiempo excesivo de resolución
     filtered_traces_performance = pm4py.filter_case_performance(event_log, 800000.0, 19000000.0, timestamp_key='time:timestamp', case_id_key='case:concept:name')
+    
     #Remover columnas adicionales
-    data_frame2 = pd.DataFrame(filtered_traces_performance)
-    data_frame2.drop('case:concept:name', inplace=True, axis=1)
-    data_frame2.drop('concept:name', inplace=True, axis=1)
-    data_frame2.drop('time:timestamp', inplace=True, axis=1)
-    data_frame2.drop('@@index', inplace=True, axis=1)
-    data_frame2.drop('@@case_index', inplace=True, axis=1)
+    traces_with_excessive_time_detail = pd.DataFrame(filtered_traces_performance)
+    traces_with_excessive_time_detail.drop('case:concept:name', inplace=True, axis=1)
+    traces_with_excessive_time_detail.drop('concept:name', inplace=True, axis=1)
+    traces_with_excessive_time_detail.drop('time:timestamp', inplace=True, axis=1)
+    traces_with_excessive_time = traces_with_excessive_time_detail.drop_duplicates(subset=['case_id'])
+    traces_with_excessive_time.drop('activityid', inplace=True, axis=1)
+    traces_with_excessive_time.drop('activity', inplace=True, axis=1)
        
+    event_log.drop('case:concept:name', inplace=True, axis=1)
+    event_log.drop('concept:name', inplace=True, axis=1)
+    event_log.drop('time:timestamp', inplace=True, axis=1)
+   
     #Export a BD Postgre
     engine = sqlalchemy.create_engine("postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_HOST+"/"+DB_NAME)
-    merged_df.to_sql('trazasajustebajo', engine, if_exists='append', index=False)
-    data_frame2.to_sql('trazasexcesomovimientos', engine, if_exists='append', index=False)
-
+    event_log.to_sql('trazas', engine, if_exists='append', index=False)
+    traces_with_low_alignemt.to_sql('trazasajustebajo', engine, if_exists='append', index=False)
+    traces_with_excessive_time.to_sql('trazasexcesotiempo', engine, if_exists='append', index=False)
+    
     if EXPORT_FILES == True:
 
         OUTPUT_LOG_FILE = "TrazasConAjusteBajoAPP.csv"
@@ -71,20 +82,16 @@ def mine_postal_data():
         OUTPUT_LOG_FILE_XES2 = "TrazasConBajaPerformanceAPP.xes"
         
         #Expot a csv las trazas con ajuste bajo
-        data_frame = pd.DataFrame(filtered_traces)
+        data_frame = pd.DataFrame(traces_with_low_alignemt)
         data_frame.to_csv(OUTPUT_LOG_FILE,index=False, header=True)       
         #Export a csv las trazas con más de diez días
-        data_frame2.to_csv(OUTPUT_LOG_FILE2,index=False, header=True)       
+        traces_with_excessive_time_detail.to_csv(OUTPUT_LOG_FILE2,index=False, header=True)       
         #Export a xes las trazas con ajuste bajo
         #pm4py.write_xes(data_frame, OUTPUT_LOG_FILE_XES)     
         #Export a xes las trazas con más de diez días
-        pm4py.write_xes(filtered_traces_performance, OUTPUT_LOG_FILE_XES2)
-
+        #pm4py.write_xes(filtered_traces_performance, OUTPUT_LOG_FILE_XES2)
 
 if __name__ == "__main__":
     mine_postal_data()
     
-
-    
-
     

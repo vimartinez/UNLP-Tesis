@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="alpha_classic_net_1683153478.0312939" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>alpha_classic_net_1683153478.0312939</text>
+    </name>
+    <page id="n0">
+      <place id="({'1 INTENTO DE ENTREGA'}, {'ENTREGADO', '2 INTENTO DE ENTREGA'})">
+        <name>
+          <text>({'1 INTENTO DE ENTREGA'}, {'ENTREGADO', '2 INTENTO DE ENTREGA'})</text>
+        </name>
+      </place>
+      <place id="({'2 INTENTO DE ENTREGA'}, {'ENTREGADO EN OFICINA', 'DEVOLUCION'})">
+        <name>
+          <text>({'2 INTENTO DE ENTREGA'}, {'ENTREGADO EN OFICINA', 'DEVOLUCION'})</text>
+        </name>
+      </place>
+      <place id="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})">
+        <name>
+          <text>({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})</text>
+        </name>
+      </place>
+      <place id="start">
+        <name>
+          <text>start</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="end">
+        <name>
+          <text>end</text>
+        </name>
+      </place>
+      <place id="({'ESPERANDO RETIRO'}, {'ENTREGADO EN OFICINA'})">
+        <name>
+          <text>({'ESPERANDO RETIRO'}, {'ENTREGADO EN OFICINA'})</text>
+        </name>
+      </place>
+      <place id="({'2 INTENTO DE ENTREGA'}, {'DEVOLUCION', 'ESPERANDO RETIRO'})">
+        <name>
+          <text>({'2 INTENTO DE ENTREGA'}, {'DEVOLUCION', 'ESPERANDO RETIRO'})</text>
+        </name>
+      </place>
+      <place id="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})">
+        <name>
+          <text>({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})</text>
+        </name>
+      </place>
+      <transition id="ENTREGADO">
+        <name>
+          <text>ENTREGADO</text>
+        </name>
+      </transition>
+      <transition id="1 INTENTO DE ENTREGA">
+        <name>
+          <text>1 INTENTO DE ENTREGA</text>
+        </name>
+      </transition>
+      <transition id="FALLECIDO">
+        <name>
+          <text>FALLECIDO</text>
+        </name>
+      </transition>
+      <transition id="CANCELADO">
+        <name>
+          <text>CANCELADO</text>
+        </name>
+      </transition>
+      <transition id="DEVOLUCION">
+        <name>
+          <text>DEVOLUCION</text>
+        </name>
+      </transition>
+      <transition id="ESPERANDO RETIRO">
+        <name>
+          <text>ESPERANDO RETIRO</text>
+        </name>
+      </transition>
+      <transition id="DESCONOCIDO">
+        <name>
+          <text>DESCONOCIDO</text>
+        </name>
+      </transition>
+      <transition id="2 INTENTO DE ENTREGA">
+        <name>
+          <text>2 INTENTO DE ENTREGA</text>
+        </name>
+      </transition>
+      <transition id="NO EXISTE DIRECCION">
+        <name>
+          <text>NO EXISTE DIRECCION</text>
+        </name>
+      </transition>
+      <transition id="RECHAZADO">
+        <name>
+          <text>RECHAZADO</text>
+        </name>
+      </transition>
+      <transition id="NO SE PUEDE LLEGAR A DIRECCION">
+        <name>
+          <text>NO SE PUEDE LLEGAR A DIRECCION</text>
+        </name>
+      </transition>
+      <transition id="ENTREGADO EN OFICINA">
+        <name>
+          <text>ENTREGADO EN OFICINA</text>
+        </name>
+      </transition>
+      <transition id="INGRESADO">
+        <name>
+          <text>INGRESADO</text>
+        </name>
+      </transition>
+      <transition id="DATOS FALTANTES EN DIRECCION">
+        <name>
+          <text>DATOS FALTANTES EN DIRECCION</text>
+        </name>
+      </transition>
+      <transition id="SE MUDO">
+        <name>
+          <text>SE MUDO</text>
+        </name>
+      </transition>
+      <arc id="2207748879360" source="CANCELADO" target="end"/>
+      <arc id="2207770497408" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="FALLECIDO"/>
+      <arc id="2207770505088" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="ENTREGADO"/>
+      <arc id="2207770496640" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="NO SE PUEDE LLEGAR A DIRECCION"/>
+      <arc id="2207770496256" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="CANCELADO"/>
+      <arc id="2207748868752" source="ENTREGADO" target="end"/>
+      <arc id="2207770501008" source="1 INTENTO DE ENTREGA" target="({'1 INTENTO DE ENTREGA'}, {'ENTREGADO', '2 INTENTO DE ENTREGA'})"/>
+      <arc id="2207770502544" source="({'1 INTENTO DE ENTREGA'}, {'ENTREGADO', '2 INTENTO DE ENTREGA'})" target="ENTREGADO"/>
+      <arc id="2207770502160" source="({'2 INTENTO DE ENTREGA'}, {'ENTREGADO EN OFICINA', 'DEVOLUCION'})" target="ENTREGADO EN OFICINA"/>
+      <arc id="2207770497168" source="INGRESADO" target="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})"/>
+      <arc id="2207770499472" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="RECHAZADO"/>
+      <arc id="2207748873504" source="ENTREGADO EN OFICINA" target="end"/>
+      <arc id="2207770503840" source="({'2 INTENTO DE ENTREGA'}, {'DEVOLUCION', 'ESPERANDO RETIRO'})" target="ESPERANDO RETIRO"/>
+      <arc id="2207770495392" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="1 INTENTO DE ENTREGA"/>
+      <arc id="2207770502304" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="NO SE PUEDE LLEGAR A DIRECCION"/>
+      <arc id="2207770495776" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="DATOS FALTANTES EN DIRECCION"/>
+      <arc id="2207770504992" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="SE MUDO"/>
+      <arc id="2207770495536" source="({'ESPERANDO RETIRO'}, {'ENTREGADO EN OFICINA'})" target="ENTREGADO EN OFICINA"/>
+      <arc id="2207770496304" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="CANCELADO"/>
+      <arc id="2207770494000" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="DESCONOCIDO"/>
+      <arc id="2207748867648" source="DATOS FALTANTES EN DIRECCION" target="end"/>
+      <arc id="2207770496832" source="DESCONOCIDO" target="end"/>
+      <arc id="2207770506816" source="SE MUDO" target="end"/>
+      <arc id="2207770499904" source="({'1 INTENTO DE ENTREGA'}, {'ENTREGADO', '2 INTENTO DE ENTREGA'})" target="2 INTENTO DE ENTREGA"/>
+      <arc id="2207770501824" source="({'2 INTENTO DE ENTREGA'}, {'ENTREGADO EN OFICINA', 'DEVOLUCION'})" target="DEVOLUCION"/>
+      <arc id="2207770497600" source="({'2 INTENTO DE ENTREGA'}, {'DEVOLUCION', 'ESPERANDO RETIRO'})" target="DEVOLUCION"/>
+      <arc id="2207770493760" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="NO EXISTE DIRECCION"/>
+      <arc id="2207770498368" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="DATOS FALTANTES EN DIRECCION"/>
+      <arc id="2207770501056" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="FALLECIDO"/>
+      <arc id="2207748880848" source="start" target="INGRESADO"/>
+      <arc id="2207770502352" source="NO EXISTE DIRECCION" target="end"/>
+      <arc id="2207770495824" source="RECHAZADO" target="end"/>
+      <arc id="2207770501584" source="2 INTENTO DE ENTREGA" target="({'2 INTENTO DE ENTREGA'}, {'ENTREGADO EN OFICINA', 'DEVOLUCION'})"/>
+      <arc id="2207770500048" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', '1 INTENTO DE ENTREGA', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="SE MUDO"/>
+      <arc id="2207770504656" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="DESCONOCIDO"/>
+      <arc id="2207770502880" source="FALLECIDO" target="end"/>
+      <arc id="2207770496352" source="NO SE PUEDE LLEGAR A DIRECCION" target="end"/>
+      <arc id="2207770501728" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="NO EXISTE DIRECCION"/>
+      <arc id="2207770505568" source="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})" target="RECHAZADO"/>
+      <arc id="2207748866160" source="DEVOLUCION" target="end"/>
+      <arc id="2207770509168" source="ESPERANDO RETIRO" target="({'ESPERANDO RETIRO'}, {'ENTREGADO EN OFICINA'})"/>
+      <arc id="2207770501872" source="2 INTENTO DE ENTREGA" target="({'2 INTENTO DE ENTREGA'}, {'DEVOLUCION', 'ESPERANDO RETIRO'})"/>
+      <arc id="2207770499568" source="INGRESADO" target="({'INGRESADO'}, {'NO EXISTE DIRECCION', 'ENTREGADO', 'RECHAZADO', 'FALLECIDO', 'NO SE PUEDE LLEGAR A DIRECCION', 'CANCELADO', 'DESCONOCIDO', 'DATOS FALTANTES EN DIRECCION', 'SE MUDO'})"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="end">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>
