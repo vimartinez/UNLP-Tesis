@@ -1,0 +1,44 @@
+version: "3.7"
+name: UNLP-Tesis
+#volumes:
+#  grafana-data:
+#  prometheus-data:    
+
+services:
+  grafana:
+    image: grafana/grafana:8.0.6
+    container_name: grafana2
+    restart: unless-stopped
+    volumes:
+    #- grafana-data:/var/lib/grafana
+    - D:/Practicas/Docker/Graphana:/usr/share/grafana/data
+    ports:
+    - 3000:3000
+    environment:
+    - GF_PLUGIN_ALLOW_LOCAL_MODE=true
+
+  postgres:
+    image: postgres:15.2
+    container_name: postgres
+    ports:
+    - 5432:5432
+    environment:
+    - POSTGRES_PASSWORD=1234
+
+  prometheus:
+    image: prom/prometheus:v2.28.1
+    container_name: prometheus
+    restart: unless-stopped
+#    volumes:
+#    - ./prometheus.yml:/etc/prometheus/prometheus.yml
+#    - prometheus-data:/prometheus
+    ports:
+    - 9090:9090
+#    command:
+#    - '--config.file=/etc/prometheus/prometheus.yml'
+#    - '--storage.tsdb.path=/prometheus'
+#    - '--storage.tsdb.retention.time=1y'
+#    - '--web.enable-lifecycle'
+
+
+  
