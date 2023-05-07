@@ -25,6 +25,11 @@ services:
     environment:
     - POSTGRES_PASSWORD=1234
 
+ # appjava:
+ #   build: ./Java/processminingpostal2
+ #   ports:
+ #     - "8080:8080"
+
   prometheus:
     image: prom/prometheus:v2.28.1
     container_name: prometheus
