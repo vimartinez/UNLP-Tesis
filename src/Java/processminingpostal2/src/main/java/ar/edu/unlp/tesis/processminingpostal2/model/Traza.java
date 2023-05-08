@@ -27,6 +27,7 @@ public class Traza {
     private String activity;
     private LocalDate timestamp;
     private String activityid;
+    @Column(name = "case_id")
     private String case_id;
 
 }

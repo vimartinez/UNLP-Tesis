@@ -47,7 +47,7 @@ public class TrazasController {
 
     @GetMapping(value="/{idTraza}")
     @Operation(summary="Obtener una indicencia de la base", description="Se debe enviar el id de la traza", tags = {"Trazas"})
-    public @ResponseBody Optional<Traza> getTrazaById(@Parameter(description="id de la traza") @PathVariable("idTraza") Long id){
+    public @ResponseBody List<Traza> getTrazaById(@Parameter(description="id de la traza") @PathVariable("idTraza") Long id){
         return trazasService.getTrazaById(id);
 
     }
@@ -65,8 +65,8 @@ public class TrazasController {
     }
 
     @GetMapping(value="year/{year}")
-    @Operation(summary="Obtener un listado de trazas según el año de estreno", description="Se debe enviar el año de la traza", tags = {"Trazas"})
-    public @ResponseBody List<Traza> getAllTrazasByYear(@Parameter(description="Año de estreno de la traza") Integer fecha){
+    @Operation(summary="Obtener un listado de trazas según fecha", description="Se debe enviar el la fecha", tags = {"Trazas"})
+    public @ResponseBody List<Traza> getAllTrazasByYear(@Parameter(description="Fecha de ingreso de la traza") Integer fecha){
         return trazasService.getAllTrazasByDate(fecha);
 
     }

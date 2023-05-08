@@ -1,9 +1,11 @@
 package ar.edu.unlp.tesis.processminingpostal2.service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unlp.tesis.processminingpostal2.model.Traza;
@@ -15,15 +17,17 @@ public class TrazasService {
 	 @Autowired
 	    TrazasRepository trazasRepository;
 	    public List<Traza> getAllTrazas() {
-	        return trazasRepository.findAll();
+		//	Pageable secondPageWithFiveElements = (Pageable) PageRequest.of(1, 5);
+	    //    return trazasRepository.findAll(secondPageWithFiveElements);
+			return trazasRepository.findAll();
 	    }
 
 	    public Traza addTraza(Traza traza) {
 	        return trazasRepository.save(traza);
 	    }
 
-	    public Optional<Traza> getTrazaById(Long id) {
-	        return trazasRepository.findById(id);
+	    public List<Traza> getTrazaById(Long case_id) {
+	        return trazasRepository.getAllTrazasByCase_id(String.valueOf(case_id));
 	    }
 
 	    public void delTraza(Long id) {
