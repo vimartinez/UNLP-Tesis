@@ -1,11 +1,12 @@
 package ar.edu.unlp.tesis.processminingpostal2.service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unlp.tesis.processminingpostal2.model.Traza;
@@ -41,4 +42,9 @@ public class TrazasService {
 	    public List<Traza> getAllTrazasByDate(Integer fecha) {
 	        return trazasRepository.getAllTrazasByDate(fecha);
 	    }
+
+
+	public Page<Traza> findAll(Pageable pagina) {
+			return trazasRepository.findAll(pagina);
+	}
 }

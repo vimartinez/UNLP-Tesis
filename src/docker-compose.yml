@@ -25,10 +25,15 @@ services:
     environment:
     - POSTGRES_PASSWORD=1234
 
-  # appjava:
- #   build: ./Java/processminingpostal2
- #   ports:
- #     - "8080:8080"
+#  javaapp:
+#    build: ./Java/processminingpostal2
+#    ports:
+#      - "8080:8080"
+
+#  reactapp:
+#    build: ./React/unlp-tesis
+#    ports:
+#      - "8001:80"
 
   prometheus:
     image: prom/prometheus:v2.28.1

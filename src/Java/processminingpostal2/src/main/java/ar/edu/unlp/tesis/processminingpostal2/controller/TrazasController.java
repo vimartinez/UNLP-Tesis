@@ -1,17 +1,16 @@
 package ar.edu.unlp.tesis.processminingpostal2.controller;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import ar.edu.unlp.tesis.processminingpostal2.model.Traza;
 import ar.edu.unlp.tesis.processminingpostal2.service.TrazasService;
@@ -22,21 +21,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/trazas")
+@CrossOrigin
 public class TrazasController {
 	
     @Autowired
     TrazasService trazasService;
-
-    @GetMapping(value="/")
-    @Operation(summary="Devuelve un listado con todas las trazas registradas", description="No tiene parámetros de entrada", tags = {"Trazas"})
-    @ApiResponses(value= {
-            @ApiResponse(responseCode="200", description="Se encontraron trazas"),
-            @ApiResponse(responseCode="404", description="No se encontraron trazas en BD")
-    })
-    public @ResponseBody List<Traza> getAllTrazas(){
-        return trazasService.getAllTrazas();
-
-    }
 
     @PostMapping(value="/", produces= "application/json")
     @Operation(summary="Dar de alta una nueva traza", description="Permite agregar un traza manualmente", tags = {"Trazas"})
@@ -59,16 +48,44 @@ public class TrazasController {
     }
 
     @PutMapping(path="/", produces="application/json")
-    @Operation(summary="Modificar una traza una traza de la base", description="Se debe enviar el id de la traza", tags = {"Trazas"})
+    @Operation(summary="Modificar una traza una traza de la base", description="Se debe enviar objeto traza", tags = {"Trazas"})
     public @ResponseBody void UpdTraza(Traza traza) {
         trazasService.updTraza(traza);
     }
 
-    @GetMapping(value="year/{year}")
+    @GetMapping(value="fecha/{fecha}")
     @Operation(summary="Obtener un listado de trazas según fecha", description="Se debe enviar el la fecha", tags = {"Trazas"})
     public @ResponseBody List<Traza> getAllTrazasByYear(@Parameter(description="Fecha de ingreso de la traza") Integer fecha){
         return trazasService.getAllTrazasByDate(fecha);
 
     }
 
+    @GetMapping(value="/")
+    @Operation(summary="Devuelve un listado con todas las trazas registradas", description="No tiene parámetros de entrada", tags = {"Trazas"})
+    @ApiResponses(value= {
+            @ApiResponse(responseCode="200", description="Se encontraron trazas"),
+            @ApiResponse(responseCode="404", description="No se encontraron trazas en BD")
+    })
+    public ResponseEntity<Map<String, Object>> getAllTrazas(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size
+    ) {
+
+        try {
+            List<Traza> trazas = new ArrayList<Traza>();
+            Pageable paging = PageRequest.of(page, size);
+            Page<Traza> pageTtraza;
+            pageTtraza = trazasService.findAll(paging);
+            trazas = pageTtraza.getContent();
+            Map<String, Object> response = new HashMap<>();
+            response.put("trazas", trazas);
+            response.put("currentPage", pageTtraza.getNumber());
+            response.put("totalItems", pageTtraza.getTotalElements());
+            response.put("totalPages", pageTtraza.getTotalPages());
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
