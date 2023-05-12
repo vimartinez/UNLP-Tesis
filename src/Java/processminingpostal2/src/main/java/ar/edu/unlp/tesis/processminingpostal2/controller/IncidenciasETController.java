@@ -70,5 +70,11 @@ public class IncidenciasETController {
         incidenciasETService.updIncidenciaExcesoTiempo(trazaExcesoTiempo);
     }
 
+    @GetMapping(value="/excesotiempo/count")
+    @Operation(summary="Devuelve el total de incidencias que no están cerradas", description="No tiene parámentos de  entrada", tags = {"Incidencias Exceso de Tiempo"})
+    public @ResponseBody Long countIncidenciasAjusteBajo(){
+        return incidenciasETService.count();
+
+    }
 
 }

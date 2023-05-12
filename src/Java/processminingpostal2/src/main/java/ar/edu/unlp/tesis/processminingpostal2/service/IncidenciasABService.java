@@ -37,6 +37,7 @@ public class IncidenciasABService {
     }
 
 
-
-
+    public Long count() {
+        return incidenciasABRepository.countIncidenciasSinResolver();
+    }
 }

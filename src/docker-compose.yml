@@ -32,8 +32,14 @@ services:
 
 #  reactapp:
 #    build: ./React/unlp-tesis
+#    environment:
+#      - NODE_ENV=development
+#    volumes:
+#      - ./:/usr/src/app
+#    command: sh -c 'yarn && yarn start'
 #    ports:
-#      - "8001:80"
+#      - "8001:8001"
+#    tty: true
 
   prometheus:
     image: prom/prometheus:v2.28.1

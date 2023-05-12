@@ -1,7 +1,8 @@
-FROM node:16-alpine 
-WORKDIR /app
-COPY package.json /app
-RUN yarn install
+FROM node:12.14.1
+
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
 COPY . .
-EXPOSE 3000
-CMD ['yarn', 'run', 'start']
+
+CMD ["node", "index.js"]

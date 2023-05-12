@@ -36,4 +36,8 @@ public class IncidenciasETService {
         return incidenciasETRepository.findAll(paging);
     }
 
+    public Long count() {
+        return incidenciasETRepository.countIncidenciasSinResolver();
+    }
+
 }

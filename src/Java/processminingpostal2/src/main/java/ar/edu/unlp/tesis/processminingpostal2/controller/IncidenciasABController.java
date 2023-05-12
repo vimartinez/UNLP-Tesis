@@ -70,4 +70,11 @@ public class IncidenciasABController {
     public @ResponseBody void UpdIncidenciAjusteBajo(TrazaAjusteBajo trazaAjusteBajo) {
         incidenciasABService.updIncidenciaAjusteBajo(trazaAjusteBajo);
     }
+
+    @GetMapping(value="/ajustebajo/count")
+    @Operation(summary="Devuelve el total de incidencias que no están cerradas", description="No tiene parámentos de  entrada", tags = {"Incidencias Ajuste Bajo"})
+    public @ResponseBody Long countIncidenciasAjusteBajo(){
+        return incidenciasABService.count();
+
+    }
 }
