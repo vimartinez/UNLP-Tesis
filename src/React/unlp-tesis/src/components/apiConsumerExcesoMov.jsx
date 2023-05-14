@@ -1,9 +1,11 @@
 import React,{useState, useEffect} from "react";
+import { Link, useNavigate } from 'react-router-dom';
 
 const ApiConsumerExcesoMov = () => {
+    const navigate = useNavigate();
     const [Incidencias, setIncidencias] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:8080/incidencias/ajustebajo/?page=0&size=5')
+        fetch('http://localhost:8080/incidencias/excesotiempo/?page=0&size=5')
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -16,14 +18,13 @@ const ApiConsumerExcesoMov = () => {
 
 
     return(
-        <div>
-            <h5>Listado de incidencias encontradas con exceso de movimientos</h5>
+        <div className="container-md">
+            <h3>Listado de incidencias encontradas con exceso de movimientos</h3>
             <table className="table table-striped">
                 <thead>
                     <tr>
                         <th >id</th>
                         <th>Traza</th>
-                        <th>Ajuste</th>
                         <th>Fecha Ingreso</th>
                         <th>Resuelta</th>
                     </tr>
@@ -32,16 +33,16 @@ const ApiConsumerExcesoMov = () => {
                     {Incidencias.map((Incidencia) =>{
                         return(
                             <tr key={Incidencia.id}>
-                                <td>{Incidencia.id}</td>
-                                <td>{Incidencia.case_id}</td>
-                                <td>{Incidencia.ajuste}</td>
-                                <td>{Incidencia.fechaIngreso}</td>
-                                <td>{Incidencia.resuelta ? 'Si' : 'No'}</td>
+                                <td><Link to={`/detalleincidencia/${Incidencia.case_id}`} className="nav-link">{Incidencia.id}</Link></td>
+                                <td><Link to={`/detalleincidencia/${Incidencia.case_id}`} className="nav-link">{Incidencia.case_id}</Link></td>
+                                <td><Link to={`/detalleincidencia/${Incidencia.case_id}`} className="nav-link">{Incidencia.fechaIngreso}</Link></td>
+                                <td><Link to={`/detalleincidencia/${Incidencia.case_id}`} className="nav-link">{Incidencia.resuelta ? 'Si' : 'No'}</Link></td> 
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
+            <button type="button" className="btn btn-sm btn-outline-secondary"  onClick={() => navigate(-1)}>Volver</button> 
         </div>
     )
 
