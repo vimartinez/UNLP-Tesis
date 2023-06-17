@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import './estilos.css'
 
 const ApiConsumerAjusteBajo = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const ApiConsumerAjusteBajo = () => {
 
     return(
         <div className="container-md">
-            <h3>Listado de incidencias con ajuste bajo encontradas</h3>
+            <h3>INCIDENCIAS CON AJUSTE BAJO</h3>
             <table className="table table-striped" >
                 <thead>
                     <tr>
@@ -42,14 +43,17 @@ const ApiConsumerAjusteBajo = () => {
                             </tr>
                         )
                     })}
+                <td></td>
                 </tbody>
             </table>
             <nav aria-label="Page navigation example">
-            <ul className="pagination">
-                <li className="page-item"><a className="page-link" href="#">Anterior</a></li>
+            <ul className="pagination2">
+                <li className="page-item"><a className="page-link --bs-pagination-color: #41464b;" href="#">Anterior</a></li>
                 <li className="page-item"><a className="page-link" href="#">1</a></li>
                 <li className="page-item"><a className="page-link" href="#">2</a></li>
                 <li className="page-item"><a className="page-link" href="#">3</a></li>
+                <li className="page-item"><a className="page-link" href="#">4</a></li>
+                <li className="page-item"><a className="page-link" href="#">5</a></li>
                 <li className="page-item"><a className="page-link" href="#">Siguiente</a></li>
             </ul>
             </nav>

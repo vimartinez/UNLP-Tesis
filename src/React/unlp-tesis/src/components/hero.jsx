@@ -41,14 +41,14 @@ const Hero = (data) => {
                         <div className="col">
                             <div className="card shadow-sm">
                                 <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect>
-                                    <text x="45%" y="50%" font-size="45" fill="#eceeef" dy=".3em">{IncidenciasAjusteBajo}</text>
+                                    <title>Placeholder</title><rect width="100%" height="100%" fill="#6ea8fe"></rect>
+                                    <text x="45%" y="50%" font-size="55" fill="#eceeef" dy=".3em">{IncidenciasAjusteBajo}</text>
                                 </svg>
                                 <div className="card-body">
                                     <p className="card-text">Candidad de incidencias con ajuste bajo sin resolver.</p>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="btn-group">
-                                        <button type="button" className="btn btn-sm btn-outline-secondary"><Link to="/excesomovimientos" className="nav-link">Ver Detalle</Link></button>
+                                        <button type="button" className="btn btn-sm btn-secondary"><Link to="/excesomovimientos" className="nav-link">Ver Detalle</Link></button>
                                         </div>
                                         <small className="text-body-secondary">Incidencias</small>
                                     </div>
@@ -59,14 +59,14 @@ const Hero = (data) => {
                             <div className="card shadow-sm">
                                 <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                                    <text x="40%" y="50%" font-size="45" fill="#eceeef" dy=".3em">{IncidenciasExcesoTiempo}</text>
+                                    <rect width="100%" height="100%" fill="#6ea8fe"></rect>
+                                    <text x="35%" y="50%" font-size="55" fill="#eceeef" dy=".3em">{IncidenciasExcesoTiempo}</text>
                                 </svg>
                                 <div className="card-body">
                                     <p className="card-text">Candidad de incidencias con exceso de movimientos sin resolver.</p>
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="btn-group">
-                                        <button type="button" className="btn btn-sm btn-outline-secondary"><Link to="/ajustebajo" className="nav-link">Ver Detalle</Link></button>
+                                        <button type="button" className="btn btn-sm btn-secondary"><Link to="/ajustebajo" className="nav-link">Ver Detalle</Link></button>
                                         </div>
                                         <small className="text-body-secondary">Incidencias</small>
                                     </div>

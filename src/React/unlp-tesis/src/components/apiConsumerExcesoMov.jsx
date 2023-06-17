@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import './estilos.css'
 
 const ApiConsumerExcesoMov = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const ApiConsumerExcesoMov = () => {
 
     return(
         <div className="container-md">
-            <h3>Listado de incidencias encontradas con exceso de movimientos</h3>
+            <h3>INCIDENCIAS CON EXCESO DE TIEMPO</h3>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -42,6 +43,17 @@ const ApiConsumerExcesoMov = () => {
                     })}
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+            <ul className="pagination2">
+                <li className="page-item"><a className="page-link --bs-pagination-color: #41464b;" href="#">Anterior</a></li>
+                <li className="page-item"><a className="page-link" href="#">1</a></li>
+                <li className="page-item"><a className="page-link" href="#">2</a></li>
+                <li className="page-item"><a className="page-link" href="#">3</a></li>
+                <li className="page-item"><a className="page-link" href="#">4</a></li>
+                <li className="page-item"><a className="page-link" href="#">5</a></li>
+                <li className="page-item"><a className="page-link" href="#">Siguiente</a></li>
+            </ul>
+            </nav>
             <button type="button" className="btn btn-sm btn-outline-secondary"  onClick={() => navigate(-1)}>Volver</button> 
         </div>
     )
